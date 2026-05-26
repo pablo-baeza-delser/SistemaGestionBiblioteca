@@ -139,14 +139,7 @@ public class PrestamoDaoImpl implements PrestamoDao {
             System.out.println("No se ha podido actualizar el préstamo: " + e.getMessage());
         }
     }
-
-    /**
-     * private int id;
-     * private Libro libro;
-     * private Usuario usuario;
-     * private String fechaPrestamo;
-     * private String fechaDevolucion;
-     */
+    
     public void eliminar(int id) {
         String sql = "DELETE FROM prestamos " +
                 "WHERE id = ?";
