@@ -1,6 +1,5 @@
 package com.biblioteca.dao;
 
-import com.biblioteca.model.Libro;
 import com.biblioteca.model.Usuario;
 
 import java.sql.Connection;
@@ -10,11 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * private int id;
- * private String nombre;
- * private String email;
- */
 public class UsuarioDaoImpl implements UsuarioDao {
 
     public void insertar(Usuario usuario) {
