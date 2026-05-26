@@ -3,7 +3,6 @@ package com.biblioteca.service;
 import com.biblioteca.dao.LibroDaoImpl;
 import com.biblioteca.model.Libro;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LibroService {
