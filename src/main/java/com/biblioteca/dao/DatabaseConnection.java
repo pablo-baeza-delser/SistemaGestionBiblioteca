@@ -1,14 +1,31 @@
 package com.biblioteca.dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DatabaseConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/biblioteca";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static String URL;
+    private static String USER;
+    private static String PASSWORD;
+
+    static {
+        try {
+            Properties props = new Properties();
+            InputStream input = DatabaseConnection.class
+                    .getClassLoader()
+                    .getResourceAsStream("config.properties");
+            props.load(input);
+            URL = props.getProperty("db.url");
+            USER = props.getProperty("db.user");
+            PASSWORD = props.getProperty("db.password");
+        } catch (Exception e) {
+            System.out.println("Error cargando configuración: " + e.getMessage());
+        }
+    }
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);

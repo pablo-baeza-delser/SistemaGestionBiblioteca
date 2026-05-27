@@ -29,12 +29,14 @@ public class PrestamosService {
 
     public void registrarDevolucion(int id) {
         Prestamo prestamo = prestamoDao.buscarPorId(id);
-        String fechaHoy = LocalDate.now().toString();
 
-        if (!prestamo.getLibro().isDisponible()) {
-            prestamo.setFechaDevolucion(fechaHoy);
-            prestamoDao.actualizar(prestamo);
+        if (prestamo.getFechaDevolucion() != null) {
+            throw new IllegalStateException("Este préstamo ya fue devuelto.");
         }
+
+        String fechaHoy = LocalDate.now().toString();
+        prestamo.setFechaDevolucion(fechaHoy);
+        prestamoDao.actualizar(prestamo);
     }
 
     public void eliminarPrestamo(int id) {
